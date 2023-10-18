@@ -8,7 +8,8 @@
 import UIKit
 
 class SplashVC: UIViewController {
-
+    var viewModel: SplashBusinessLayer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
