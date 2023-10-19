@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A23E51CE2AE07A6200A4F61D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23E51CD2AE07A6200A4F61D /* HomeVC.swift */; };
+		A265FA722AE155550084451E /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A265FA702AE155550084451E /* HomeTableViewCell.swift */; };
+		A265FA732AE155550084451E /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A265FA712AE155550084451E /* HomeTableViewCell.xib */; };
 		A271A53F2AE02C1D0086CC20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A271A53E2AE02C1D0086CC20 /* AppDelegate.swift */; };
 		A271A5412AE02C1D0086CC20 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A271A5402AE02C1D0086CC20 /* SceneDelegate.swift */; };
 		A271A5432AE02C1D0086CC20 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A271A5422AE02C1D0086CC20 /* SplashVC.swift */; };
@@ -22,10 +24,14 @@
 		A271A56A2AE031760086CC20 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A271A5692AE031760086CC20 /* Alamofire */; };
 		A282E0E32AE039B900E0938A /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282E0E22AE039B900E0938A /* HomeVM.swift */; };
 		A282E0E62AE03B7C00E0938A /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282E0E52AE03B7C00E0938A /* BaseVC.swift */; };
+		A2A321722AE13BBC00EB7AAD /* HomeEndPointItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A321712AE13BBC00EB7AAD /* HomeEndPointItem.swift */; };
+		A2A321742AE13C8F00EB7AAD /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A321732AE13C8F00EB7AAD /* HomeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A23E51CD2AE07A6200A4F61D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		A265FA702AE155550084451E /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		A265FA712AE155550084451E /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		A271A53B2AE02C1D0086CC20 /* FilmApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A271A53E2AE02C1D0086CC20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A271A5402AE02C1D0086CC20 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +47,8 @@
 		A271A5662AE0312A0086CC20 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A282E0E22AE039B900E0938A /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		A282E0E52AE03B7C00E0938A /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		A2A321712AE13BBC00EB7AAD /* HomeEndPointItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEndPointItem.swift; sourceTree = "<group>"; };
+		A2A321732AE13C8F00EB7AAD /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +126,7 @@
 		A271A5552AE02C550086CC20 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				A2A321702AE13B7200EB7AAD /* EndPointItem */,
 				A271A55C2AE02CD30086CC20 /* ViewModel */,
 				A271A55B2AE02CCE0086CC20 /* View */,
 				A271A55A2AE02CC90086CC20 /* Model */,
@@ -158,6 +167,7 @@
 		A271A55A2AE02CC90086CC20 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A2A321732AE13C8F00EB7AAD /* HomeModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -166,6 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				A23E51CD2AE07A6200A4F61D /* HomeVC.swift */,
+				A265FA702AE155550084451E /* HomeTableViewCell.swift */,
+				A265FA712AE155550084451E /* HomeTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -195,6 +207,14 @@
 				A282E0E52AE03B7C00E0938A /* BaseVC.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		A2A321702AE13B7200EB7AAD /* EndPointItem */ = {
+			isa = PBXGroup;
+			children = (
+				A2A321712AE13BBC00EB7AAD /* HomeEndPointItem.swift */,
+			);
+			name = EndPointItem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +283,7 @@
 			files = (
 				A271A54B2AE02C1E0086CC20 /* LaunchScreen.storyboard in Resources */,
 				A271A5482AE02C1E0086CC20 /* Assets.xcassets in Resources */,
+				A265FA732AE155550084451E /* HomeTableViewCell.xib in Resources */,
 				A271A5462AE02C1D0086CC20 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,12 +297,15 @@
 			files = (
 				A271A5632AE031030086CC20 /* ApiConstant.swift in Sources */,
 				A282E0E32AE039B900E0938A /* HomeVM.swift in Sources */,
+				A265FA722AE155550084451E /* HomeTableViewCell.swift in Sources */,
 				A271A5612AE030F20086CC20 /* ApiClientError.swift in Sources */,
 				A271A5432AE02C1D0086CC20 /* SplashVC.swift in Sources */,
 				A271A53F2AE02C1D0086CC20 /* AppDelegate.swift in Sources */,
 				A271A5672AE0312A0086CC20 /* NetworkManager.swift in Sources */,
+				A2A321722AE13BBC00EB7AAD /* HomeEndPointItem.swift in Sources */,
 				A271A5412AE02C1D0086CC20 /* SceneDelegate.swift in Sources */,
 				A271A5652AE031200086CC20 /* EndPoint.swift in Sources */,
+				A2A321742AE13C8F00EB7AAD /* HomeModel.swift in Sources */,
 				A282E0E62AE03B7C00E0938A /* BaseVC.swift in Sources */,
 				A23E51CE2AE07A6200A4F61D /* HomeVC.swift in Sources */,
 				A271A55E2AE02DA20086CC20 /* SplashVM.swift in Sources */,

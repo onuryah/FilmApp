@@ -6,6 +6,6 @@
 //
 
 struct ApiConstant {
-    static let BASE_URL = ""
+    static let BASE_URL = "https://www.omdbapi.com/"
     static let PATH = ""
 }
