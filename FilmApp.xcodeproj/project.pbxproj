@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A23E51CE2AE07A6200A4F61D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23E51CD2AE07A6200A4F61D /* HomeVC.swift */; };
 		A271A53F2AE02C1D0086CC20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A271A53E2AE02C1D0086CC20 /* AppDelegate.swift */; };
 		A271A5412AE02C1D0086CC20 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A271A5402AE02C1D0086CC20 /* SceneDelegate.swift */; };
 		A271A5432AE02C1D0086CC20 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A271A5422AE02C1D0086CC20 /* SplashVC.swift */; };
@@ -19,9 +20,12 @@
 		A271A5652AE031200086CC20 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A271A5642AE031200086CC20 /* EndPoint.swift */; };
 		A271A5672AE0312A0086CC20 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A271A5662AE0312A0086CC20 /* NetworkManager.swift */; };
 		A271A56A2AE031760086CC20 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A271A5692AE031760086CC20 /* Alamofire */; };
+		A282E0E32AE039B900E0938A /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282E0E22AE039B900E0938A /* HomeVM.swift */; };
+		A282E0E62AE03B7C00E0938A /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282E0E52AE03B7C00E0938A /* BaseVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A23E51CD2AE07A6200A4F61D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		A271A53B2AE02C1D0086CC20 /* FilmApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A271A53E2AE02C1D0086CC20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A271A5402AE02C1D0086CC20 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +39,8 @@
 		A271A5622AE031030086CC20 /* ApiConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstant.swift; sourceTree = "<group>"; };
 		A271A5642AE031200086CC20 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		A271A5662AE0312A0086CC20 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		A282E0E22AE039B900E0938A /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
+		A282E0E52AE03B7C00E0938A /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,10 +74,11 @@
 		A271A53D2AE02C1D0086CC20 /* FilmApp */ = {
 			isa = PBXGroup;
 			children = (
+				A271A54C2AE02C1E0086CC20 /* Info.plist */,
+				A282E0E42AE03B6100E0938A /* Base */,
 				A271A55F2AE030D20086CC20 /* Network */,
 				A271A5532AE02C370086CC20 /* Scenes */,
 				A271A5522AE02C260086CC20 /* Core */,
-				A271A54C2AE02C1E0086CC20 /* Info.plist */,
 			);
 			path = FilmApp;
 			sourceTree = "<group>";
@@ -158,6 +165,7 @@
 		A271A55B2AE02CCE0086CC20 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A23E51CD2AE07A6200A4F61D /* HomeVC.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -165,6 +173,7 @@
 		A271A55C2AE02CD30086CC20 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A282E0E22AE039B900E0938A /* HomeVM.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -178,6 +187,14 @@
 				A271A5662AE0312A0086CC20 /* NetworkManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		A282E0E42AE03B6100E0938A /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				A282E0E52AE03B7C00E0938A /* BaseVC.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,12 +275,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A271A5632AE031030086CC20 /* ApiConstant.swift in Sources */,
+				A282E0E32AE039B900E0938A /* HomeVM.swift in Sources */,
 				A271A5612AE030F20086CC20 /* ApiClientError.swift in Sources */,
 				A271A5432AE02C1D0086CC20 /* SplashVC.swift in Sources */,
 				A271A53F2AE02C1D0086CC20 /* AppDelegate.swift in Sources */,
 				A271A5672AE0312A0086CC20 /* NetworkManager.swift in Sources */,
 				A271A5412AE02C1D0086CC20 /* SceneDelegate.swift in Sources */,
 				A271A5652AE031200086CC20 /* EndPoint.swift in Sources */,
+				A282E0E62AE03B7C00E0938A /* BaseVC.swift in Sources */,
+				A23E51CE2AE07A6200A4F61D /* HomeVC.swift in Sources */,
 				A271A55E2AE02DA20086CC20 /* SplashVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +438,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -445,6 +466,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

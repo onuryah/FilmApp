@@ -7,14 +7,25 @@
 
 import UIKit
 
-class SplashVC: UIViewController {
+class SplashVC: BaseVC {
     var viewModel: SplashBusinessLayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setup()
+        viewModel?.checkWhetherInternetConnection()
     }
+    
+    private func setup() {
+        viewModel = SplashVM()
+        viewModel?.alertDelegate = self
+        viewModel?.view = self
+    }
+}
 
-
+extension SplashVC: SplashDisplayLayer{
+    func push(controller: UIViewController) {
+        show(controller, sender: nil)
+    }
 }
 
