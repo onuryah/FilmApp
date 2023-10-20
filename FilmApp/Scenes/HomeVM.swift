@@ -40,9 +40,10 @@ final class HomeVM {
             switch result {
             case .success(let response):
                 self.filmArray = response.search
-                self.delegate?.reloadData()
                 if filmArray?.isEmpty ?? true {
                     alertDelegate?.createAlert(alertTitle: "Alert", failMessage: response.error ?? "")
+                } else {
+                    self.delegate?.reloadData()
                 }
             case .failure(let error):
                 alertDelegate?.createAlert(alertTitle: "Alert", failMessage: error.message)
@@ -50,10 +51,19 @@ final class HomeVM {
         }
     }
     
+    private func checkSearchBarEmpty() -> Bool {
+        let isSearchBarEmpty = searchBarQuery == "?s=&apikey=b508dfa4&page=1"
+        if isSearchBarEmpty {
+            self.filmArray?.removeAll()
+            self.delegate?.reloadData()
+        }
+        return isSearchBarEmpty
+    }
+    
     func fetchIfNeeded(searchQuery: String) {
         DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-            if searchQuery == self.searchBarQuery {
-                self.fetch()
+            if searchQuery == self.searchBarQuery && !self.checkSearchBarEmpty() {
+                    self.fetch()
             }
         }
     }

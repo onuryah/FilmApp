@@ -48,22 +48,28 @@
                                 <rect key="frame" x="8" y="112" width="398" height="742"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="OfW-mV-Tkj">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SLk-W7-vbt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="SLk-W7-vbt" firstAttribute="bottom" secondItem="kPe-hv-EIc" secondAttribute="bottom" constant="8" id="An6-3q-1VI"/>
                             <constraint firstItem="HCT-G7-iTj" firstAttribute="top" secondItem="SLk-W7-vbt" secondAttribute="top" id="Ea8-VU-CXc"/>
+                            <constraint firstItem="OfW-mV-Tkj" firstAttribute="centerY" secondItem="u8y-hw-19a" secondAttribute="centerY" id="V9r-aA-2Dg"/>
                             <constraint firstItem="HCT-G7-iTj" firstAttribute="top" secondItem="SLk-W7-vbt" secondAttribute="top" id="WTv-Qa-ddG"/>
                             <constraint firstItem="SLk-W7-vbt" firstAttribute="trailing" secondItem="kPe-hv-EIc" secondAttribute="trailing" constant="8" id="dDU-3l-RTu"/>
                             <constraint firstItem="kPe-hv-EIc" firstAttribute="leading" secondItem="SLk-W7-vbt" secondAttribute="leading" constant="8" id="e5z-RQ-Z7X"/>
                             <constraint firstItem="kPe-hv-EIc" firstAttribute="top" secondItem="HCT-G7-iTj" secondAttribute="bottom" constant="8" id="fQM-C1-AJa"/>
+                            <constraint firstItem="OfW-mV-Tkj" firstAttribute="centerX" secondItem="u8y-hw-19a" secondAttribute="centerX" id="p0r-P0-dvA"/>
                             <constraint firstItem="HCT-G7-iTj" firstAttribute="leading" secondItem="SLk-W7-vbt" secondAttribute="leading" id="qMn-Ck-ARe"/>
                             <constraint firstItem="HCT-G7-iTj" firstAttribute="trailing" secondItem="SLk-W7-vbt" secondAttribute="trailing" id="te3-5D-Rq6"/>
                             <constraint firstItem="HCT-G7-iTj" firstAttribute="centerX" secondItem="u8y-hw-19a" secondAttribute="centerX" id="txj-X7-rwi"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="OfW-mV-Tkj" id="Yva-BZ-egx"/>
                         <outlet property="searchBar" destination="HCT-G7-iTj" id="Qfi-Ed-XhP"/>
                         <outlet property="tableView" destination="kPe-hv-EIc" id="ewP-64-L9q"/>
                     </connections>

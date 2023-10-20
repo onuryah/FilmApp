@@ -10,6 +10,7 @@ import UIKit
 class HomeVC: BaseVC {
     @IBOutlet weak private var tableView: UITableView!
     @IBOutlet weak private var searchBar: UISearchBar!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var viewModel: HomeBusinessLayer?
     
     override func viewDidLoad() {
@@ -24,6 +25,7 @@ extension HomeVC: UISearchBarDelegate {
         searchBar.delegate = self
         viewModel?.delegate = self
         viewModel?.alertDelegate = self
+        activityIndicator.hidesWhenStopped = true
         setDelegates()
         tableView.register(HomeTableViewCell.nib, forCellReuseIdentifier: HomeTableViewCell.identifier)
     }
@@ -61,5 +63,6 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
 extension HomeVC: HomeTableViewDelegate {
     func reloadData() {
         tableView.reloadData()
+        activityIndicator.stopAnimating()
     }
 }
