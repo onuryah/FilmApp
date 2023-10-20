@@ -1,15 +1,15 @@
 //
-//  HomeTableViewCell.swift
+//  HomeCollectionViewCell.swift
 //  FilmApp
 //
-//  Created by OnurAlp on 19.10.2023.
+//  Created by OnurAlp on 20.10.2023.
 //
 
 import UIKit
 
-class HomeTableViewCell: UITableViewCell {
-    @IBOutlet weak var filmImage: UIImageView!
+class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var filmImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -17,13 +17,12 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     func populate(film: Film?) {
-        titleLabel.text = film?.title
         SDWebImageHelper.shared.setImage(view: filmImage, urlString: film?.poster ?? "")
     }
-    
+
 }
 
-extension HomeTableViewCell {
+extension HomeCollectionViewCell {
     static var identifier: String {
         return String(describing: self)
     }

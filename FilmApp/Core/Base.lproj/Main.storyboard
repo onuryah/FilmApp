@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,6 +36,9 @@
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="HCT-G7-iTj">
                                 <rect key="frame" x="0.0" y="48" width="414" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="Iwq-0w-ecu"/>
+                                </constraints>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -44,10 +48,26 @@
                                     <outlet property="delegate" destination="QEm-wi-zlK" id="X2V-Hx-eEM"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kPe-hv-EIc">
-                                <rect key="frame" x="8" y="112" width="398" height="742"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qQQ-7J-2Z7">
+                                <rect key="frame" x="16" y="120" width="382" height="726"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HQJ-XP-mxZ">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="81e-9p-Nqj">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7h2-eB-tvf">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="OfW-mV-Tkj">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
@@ -55,13 +75,13 @@
                         <viewLayoutGuide key="safeArea" id="SLk-W7-vbt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="SLk-W7-vbt" firstAttribute="bottom" secondItem="kPe-hv-EIc" secondAttribute="bottom" constant="8" id="An6-3q-1VI"/>
+                            <constraint firstItem="SLk-W7-vbt" firstAttribute="trailing" secondItem="qQQ-7J-2Z7" secondAttribute="trailing" constant="16" id="9mZ-pz-Nig"/>
                             <constraint firstItem="HCT-G7-iTj" firstAttribute="top" secondItem="SLk-W7-vbt" secondAttribute="top" id="Ea8-VU-CXc"/>
+                            <constraint firstItem="qQQ-7J-2Z7" firstAttribute="leading" secondItem="SLk-W7-vbt" secondAttribute="leading" constant="16" id="Ewa-t6-18l"/>
                             <constraint firstItem="OfW-mV-Tkj" firstAttribute="centerY" secondItem="u8y-hw-19a" secondAttribute="centerY" id="V9r-aA-2Dg"/>
                             <constraint firstItem="HCT-G7-iTj" firstAttribute="top" secondItem="SLk-W7-vbt" secondAttribute="top" id="WTv-Qa-ddG"/>
-                            <constraint firstItem="SLk-W7-vbt" firstAttribute="trailing" secondItem="kPe-hv-EIc" secondAttribute="trailing" constant="8" id="dDU-3l-RTu"/>
-                            <constraint firstItem="kPe-hv-EIc" firstAttribute="leading" secondItem="SLk-W7-vbt" secondAttribute="leading" constant="8" id="e5z-RQ-Z7X"/>
-                            <constraint firstItem="kPe-hv-EIc" firstAttribute="top" secondItem="HCT-G7-iTj" secondAttribute="bottom" constant="8" id="fQM-C1-AJa"/>
+                            <constraint firstItem="SLk-W7-vbt" firstAttribute="bottom" secondItem="qQQ-7J-2Z7" secondAttribute="bottom" constant="16" id="kbD-BL-ekz"/>
+                            <constraint firstItem="qQQ-7J-2Z7" firstAttribute="top" secondItem="HCT-G7-iTj" secondAttribute="bottom" constant="16" id="onB-dG-LGD"/>
                             <constraint firstItem="OfW-mV-Tkj" firstAttribute="centerX" secondItem="u8y-hw-19a" secondAttribute="centerX" id="p0r-P0-dvA"/>
                             <constraint firstItem="HCT-G7-iTj" firstAttribute="leading" secondItem="SLk-W7-vbt" secondAttribute="leading" id="qMn-Ck-ARe"/>
                             <constraint firstItem="HCT-G7-iTj" firstAttribute="trailing" secondItem="SLk-W7-vbt" secondAttribute="trailing" id="te3-5D-Rq6"/>
@@ -70,8 +90,8 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="OfW-mV-Tkj" id="Yva-BZ-egx"/>
+                        <outlet property="collectionView" destination="qQQ-7J-2Z7" id="402-fH-ivk"/>
                         <outlet property="searchBar" destination="HCT-G7-iTj" id="Qfi-Ed-XhP"/>
-                        <outlet property="tableView" destination="kPe-hv-EIc" id="ewP-64-L9q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OtE-sx-OFg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

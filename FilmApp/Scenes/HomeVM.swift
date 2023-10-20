@@ -20,6 +20,7 @@ protocol HomeBusinessLayer {
     var alertDelegate: BaseDelegateProtocol? { get set }
     
     func fetchIfNeeded(searchQuery: String)
+    func findCollectionCellSize(collectionViewSize: CGSize) -> CGSize
 }
 
 protocol HomeTableViewDelegate: AnyObject {
@@ -33,7 +34,9 @@ final class HomeVM {
     weak var delegate: HomeTableViewDelegate?
     var view: HomeDisplayLayer?
     var alertDelegate: BaseDelegateProtocol?
-    
+}
+
+extension HomeVM: HomeBusinessLayer {
     private func fetch() {
         networkManager.request(endpoint: .upcoming(query: searchBarQuery ?? ""), type: Films.self) { [weak self] result in
             guard let self = self else { return }
@@ -67,7 +70,10 @@ final class HomeVM {
             }
         }
     }
-}
-
-extension HomeVM: HomeBusinessLayer {
+    
+    func findCollectionCellSize(collectionViewSize: CGSize) -> CGSize {
+        let width = (collectionViewSize.width - 16) / 2
+        let height = (collectionViewSize.height - 32) / 2.5
+        return CGSize(width: width, height: height)
+    }
 }
