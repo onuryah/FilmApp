@@ -125,6 +125,21 @@
             </objects>
             <point key="canvasLocation" x="2063.768115942029" y="-27.455357142857142"/>
         </scene>
+        <!--DetailsVC-->
+        <scene sceneID="C1e-as-Cqu">
+            <objects>
+                <viewController storyboardIdentifier="DetailsVC" id="Epy-pK-nGL" customClass="DetailsVC" customModule="FilmApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h7s-Qy-LBG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="sIF-z2-bqY"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aEf-EF-V9n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2934" y="-31"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="dvS-mL-daq">
             <objects>

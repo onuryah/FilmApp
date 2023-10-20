@@ -21,6 +21,7 @@ protocol HomeBusinessLayer {
     
     func fetchIfNeeded(searchQuery: String)
     func findCollectionCellSize(collectionViewSize: CGSize) -> CGSize
+    func navigateToDetails(filmId: String)
 }
 
 protocol HomeTableViewDelegate: AnyObject {
@@ -75,5 +76,13 @@ extension HomeVM: HomeBusinessLayer {
         let width = (collectionViewSize.width - 16) / 2
         let height = (collectionViewSize.height - 32) / 2.5
         return CGSize(width: width, height: height)
+    }
+    
+    func navigateToDetails(filmId: String) {
+        let viewModel = DetailsVM(filmId: filmId, networkManager: networkManager)
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsVC
+        resultViewController.viewModel = viewModel
+        self.view?.push(controller: resultViewController)
     }
 }

@@ -23,6 +23,7 @@ extension HomeVC: UISearchBarDelegate {
     private func setup() {
         self.navigationItem.setHidesBackButton(true, animated: false)
         searchBar.delegate = self
+        viewModel?.view = self
         viewModel?.delegate = self
         viewModel?.alertDelegate = self
         activityIndicator.hidesWhenStopped = true
@@ -50,8 +51,10 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel?.navigateToDetails(filmId: viewModel?.filmArray?[indexPath.row].imdbID ?? "")
+    }
 
-    
     private func setDelegates() {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -68,5 +71,11 @@ extension HomeVC: HomeTableViewDelegate {
     func reloadData() {
         collectionView.reloadData()
         activityIndicator.stopAnimating()
+    }
+}
+
+extension HomeVC: HomeDisplayLayer {
+    func push(controller: UIViewController) {
+        show(controller, sender: nil)
     }
 }
