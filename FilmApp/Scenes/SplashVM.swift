@@ -27,7 +27,7 @@ final class SplashVM{
 
 extension SplashVM: SplashBusinessLayer {
     func checkWhetherInternetConnection() {
-        if !((NetworkReachabilityManager()?.isReachable) != nil) {
+        if !(NetworkReachabilityManager()?.isReachable ?? false) {
             alertDelegate?.createAlert(alertTitle: "Network Connection Fail", failMessage: "Please check your internet connection!")
         } else {
             navigateToHome()
