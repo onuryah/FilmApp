@@ -23,13 +23,20 @@ extension HomeVC: UISearchBarDelegate {
         self.navigationItem.setHidesBackButton(true, animated: false)
         searchBar.delegate = self
         viewModel?.delegate = self
+        viewModel?.alertDelegate = self
         setDelegates()
         tableView.register(HomeTableViewCell.nib, forCellReuseIdentifier: HomeTableViewCell.identifier)
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        viewModel?.searchBarQuery = "?s=\(searchBar.text ?? "")&apikey=b508dfa4"
-        viewModel?.fetch()
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        viewModel?.searchBarQuery = "?s=\(searchBar.text ?? "")&apikey=b508dfa4"
+//        viewModel?.fetch()
+//    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let searchBarQuery = "?s=\(searchBar.text ?? "")&apikey=b508dfa4&page=1"
+        viewModel?.searchBarQuery = searchBarQuery
+        viewModel?.fetchIfNeeded(searchQuery: searchBarQuery)
     }
 }
 

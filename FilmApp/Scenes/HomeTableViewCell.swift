@@ -18,6 +18,7 @@ class HomeTableViewCell: UITableViewCell {
     
     func populate(film: Film?) {
         titleLabel.text = film?.title
+        SDWebImageHelper.shared.setImage(view: filmImage, urlString: film?.poster ?? "")
     }
     
 }

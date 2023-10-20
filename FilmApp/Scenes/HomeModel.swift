@@ -10,12 +10,13 @@ import Foundation
 // MARK: - Films
 struct Films: Codable {
     let search: [Film]?
-    let totalResults, response: String?
+    let totalResults, response, error: String?
 
     enum CodingKeys: String, CodingKey {
         case search = "Search"
         case totalResults
         case response = "Response"
+        case error = "Error"
     }
 }
 
@@ -36,4 +37,5 @@ struct Film: Codable {
 
 enum TypeEnum: String, Codable {
     case movie = "movie"
+    case series = "series"
 }
