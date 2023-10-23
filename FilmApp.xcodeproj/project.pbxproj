@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A22E915C2AE69DA3007E9DD5 /* DetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22E915A2AE69DA3007E9DD5 /* DetailsCollectionViewCell.swift */; };
 		A22E915D2AE69DA3007E9DD5 /* DetailsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A22E915B2AE69DA3007E9DD5 /* DetailsCollectionViewCell.xib */; };
+		A22E91632AE70673007E9DD5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A22E91622AE70673007E9DD5 /* FirebaseAnalytics */; };
+		A22E91652AE708E1007E9DD5 /* AnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22E91642AE708E1007E9DD5 /* AnalyticsHelper.swift */; };
 		A23E51CE2AE07A6200A4F61D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23E51CD2AE07A6200A4F61D /* HomeVC.swift */; };
 		A265FA762AE1593F0084451E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = A265FA752AE1593F0084451E /* SDWebImage */; };
 		A265FA792AE1597A0084451E /* SDWebImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A265FA782AE1597A0084451E /* SDWebImageHelper.swift */; };
@@ -34,11 +36,13 @@
 		A2941C3E2AE2D95F00428E4B /* DetailsEndPointItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2941C3D2AE2D95F00428E4B /* DetailsEndPointItem.swift */; };
 		A2A321722AE13BBC00EB7AAD /* HomeEndPointItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A321712AE13BBC00EB7AAD /* HomeEndPointItem.swift */; };
 		A2A321742AE13C8F00EB7AAD /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A321732AE13C8F00EB7AAD /* HomeModel.swift */; };
+		A2C9CEA22AE719F400DAD354 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2C9CEA12AE719F400DAD354 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A22E915A2AE69DA3007E9DD5 /* DetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		A22E915B2AE69DA3007E9DD5 /* DetailsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCollectionViewCell.xib; sourceTree = "<group>"; };
+		A22E91642AE708E1007E9DD5 /* AnalyticsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsHelper.swift; sourceTree = "<group>"; };
 		A23E51CD2AE07A6200A4F61D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		A265FA782AE1597A0084451E /* SDWebImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDWebImageHelper.swift; sourceTree = "<group>"; };
 		A271A53B2AE02C1D0086CC20 /* FilmApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +68,7 @@
 		A2941C3D2AE2D95F00428E4B /* DetailsEndPointItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEndPointItem.swift; sourceTree = "<group>"; };
 		A2A321712AE13BBC00EB7AAD /* HomeEndPointItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEndPointItem.swift; sourceTree = "<group>"; };
 		A2A321732AE13C8F00EB7AAD /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		A2C9CEA12AE719F400DAD354 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +78,7 @@
 			files = (
 				A265FA762AE1593F0084451E /* SDWebImage in Frameworks */,
 				A271A56A2AE031760086CC20 /* Alamofire in Frameworks */,
+				A22E91632AE70673007E9DD5 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				A265FA782AE1597A0084451E /* SDWebImageHelper.swift */,
+				A22E91642AE708E1007E9DD5 /* AnalyticsHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -108,6 +115,7 @@
 			children = (
 				A265FA772AE159680084451E /* Helper */,
 				A271A54C2AE02C1E0086CC20 /* Info.plist */,
+				A2C9CEA12AE719F400DAD354 /* GoogleService-Info.plist */,
 				A282E0E42AE03B6100E0938A /* Base */,
 				A271A55F2AE030D20086CC20 /* Network */,
 				A271A5532AE02C370086CC20 /* Scenes */,
@@ -299,6 +307,7 @@
 			packageProductDependencies = (
 				A271A5692AE031760086CC20 /* Alamofire */,
 				A265FA752AE1593F0084451E /* SDWebImage */,
+				A22E91622AE70673007E9DD5 /* FirebaseAnalytics */,
 			);
 			productName = FilmApp;
 			productReference = A271A53B2AE02C1D0086CC20 /* FilmApp.app */;
@@ -331,6 +340,7 @@
 			packageReferences = (
 				A271A5682AE031760086CC20 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				A265FA742AE1593E0084451E /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				A22E91612AE70673007E9DD5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = A271A53C2AE02C1D0086CC20 /* Products */;
 			projectDirPath = "";
@@ -351,6 +361,7 @@
 				A22E915D2AE69DA3007E9DD5 /* DetailsCollectionViewCell.xib in Resources */,
 				A271A5482AE02C1E0086CC20 /* Assets.xcassets in Resources */,
 				A271A5462AE02C1D0086CC20 /* Main.storyboard in Resources */,
+				A2C9CEA22AE719F400DAD354 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +387,7 @@
 				A2941C362AE2CDC500428E4B /* DetailsVC.swift in Sources */,
 				A22E915C2AE69DA3007E9DD5 /* DetailsCollectionViewCell.swift in Sources */,
 				A271A5412AE02C1D0086CC20 /* SceneDelegate.swift in Sources */,
+				A22E91652AE708E1007E9DD5 /* AnalyticsHelper.swift in Sources */,
 				A271A5652AE031200086CC20 /* EndPoint.swift in Sources */,
 				A2A321742AE13C8F00EB7AAD /* HomeModel.swift in Sources */,
 				A282E0E62AE03B7C00E0938A /* BaseVC.swift in Sources */,
@@ -600,6 +612,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A22E91612AE70673007E9DD5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 		A265FA742AE1593E0084451E /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
@@ -619,6 +639,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A22E91622AE70673007E9DD5 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A22E91612AE70673007E9DD5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
 		A265FA752AE1593F0084451E /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A265FA742AE1593E0084451E /* XCRemoteSwiftPackageReference "SDWebImage" */;

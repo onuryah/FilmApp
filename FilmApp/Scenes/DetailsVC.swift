@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FirebaseAnalytics
 
 final class DetailsVC: BaseVC {
     @IBOutlet weak private var filmImage: UIImageView!
@@ -47,6 +48,12 @@ extension DetailsVC: ViewSetterDelegate {
         plotLabel.text = details?.plot
         awardsLabel.text = details?.awards
         collectionView.reloadData()
+        
+        if let title = details?.title {
+            AnalyticsHelper.shared.logEvent(event: AnaltyticsConstants.showed_film_details,
+                                            params: AnaltyticsConstants.selected_film,
+                                            value: title)
+        }
     }
 }
 
