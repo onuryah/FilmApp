@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A22E915C2AE69DA3007E9DD5 /* DetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22E915A2AE69DA3007E9DD5 /* DetailsCollectionViewCell.swift */; };
+		A22E915D2AE69DA3007E9DD5 /* DetailsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A22E915B2AE69DA3007E9DD5 /* DetailsCollectionViewCell.xib */; };
 		A23E51CE2AE07A6200A4F61D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23E51CD2AE07A6200A4F61D /* HomeVC.swift */; };
 		A265FA762AE1593F0084451E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = A265FA752AE1593F0084451E /* SDWebImage */; };
 		A265FA792AE1597A0084451E /* SDWebImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A265FA782AE1597A0084451E /* SDWebImageHelper.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A22E915A2AE69DA3007E9DD5 /* DetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		A22E915B2AE69DA3007E9DD5 /* DetailsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCollectionViewCell.xib; sourceTree = "<group>"; };
 		A23E51CD2AE07A6200A4F61D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		A265FA782AE1597A0084451E /* SDWebImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDWebImageHelper.swift; sourceTree = "<group>"; };
 		A271A53B2AE02C1D0086CC20 /* FilmApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +242,8 @@
 			isa = PBXGroup;
 			children = (
 				A2941C352AE2CDC500428E4B /* DetailsVC.swift */,
+				A22E915A2AE69DA3007E9DD5 /* DetailsCollectionViewCell.swift */,
+				A22E915B2AE69DA3007E9DD5 /* DetailsCollectionViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -342,6 +348,7 @@
 			files = (
 				A2941C322AE2A12B00428E4B /* HomeCollectionViewCell.xib in Resources */,
 				A271A54B2AE02C1E0086CC20 /* LaunchScreen.storyboard in Resources */,
+				A22E915D2AE69DA3007E9DD5 /* DetailsCollectionViewCell.xib in Resources */,
 				A271A5482AE02C1E0086CC20 /* Assets.xcassets in Resources */,
 				A271A5462AE02C1D0086CC20 /* Main.storyboard in Resources */,
 			);
@@ -367,6 +374,7 @@
 				A2A321722AE13BBC00EB7AAD /* HomeEndPointItem.swift in Sources */,
 				A2941C3B2AE2D6E800428E4B /* DetailsModel.swift in Sources */,
 				A2941C362AE2CDC500428E4B /* DetailsVC.swift in Sources */,
+				A22E915C2AE69DA3007E9DD5 /* DetailsCollectionViewCell.swift in Sources */,
 				A271A5412AE02C1D0086CC20 /* SceneDelegate.swift in Sources */,
 				A271A5652AE031200086CC20 /* EndPoint.swift in Sources */,
 				A2A321742AE13C8F00EB7AAD /* HomeModel.swift in Sources */,

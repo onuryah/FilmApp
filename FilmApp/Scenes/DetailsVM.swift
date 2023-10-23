@@ -11,8 +11,13 @@ protocol DetailsBusinessLayer {
     var filmId: String { get set }
     var alertDelegate: BaseDelegateProtocol? { get set }
     var details: Details? { get set }
+    var delegate: ViewSetterDelegate? { get set }
     
     func fetch()
+}
+
+protocol ViewSetterDelegate {
+    func setViews()
 }
 
 class DetailsVM {
@@ -20,6 +25,7 @@ class DetailsVM {
     var networkManager: NetworkManager<MainEndpointItem>
     var details: Details?
     var alertDelegate: BaseDelegateProtocol?
+    var delegate: ViewSetterDelegate?
     
     init(filmId: String, networkManager: NetworkManager<MainEndpointItem>) {
         self.filmId = filmId
@@ -35,6 +41,7 @@ extension DetailsVM: DetailsBusinessLayer {
             switch result {
             case .success(let response):
                 self.details = response
+                delegate?.setViews()
             case .failure(let error):
                 alertDelegate?.createAlert(alertTitle: "Alert", failMessage: error.message)
             }
