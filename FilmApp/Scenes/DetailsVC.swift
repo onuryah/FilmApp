@@ -10,7 +10,6 @@ import UIKit
 
 final class DetailsVC: BaseVC {
     @IBOutlet weak private var filmImage: UIImageView!
-    @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var yearLabel: UILabel!
     @IBOutlet weak private var genreLabel: UILabel!
     @IBOutlet weak private var directorLabel: UILabel!
@@ -30,7 +29,10 @@ final class DetailsVC: BaseVC {
     private func setup() {
         viewModel?.alertDelegate = self
         viewModel?.delegate = self
+        
         collectionView.register(DetailsCollectionViewCell.nib, forCellWithReuseIdentifier: DetailsCollectionViewCell.identifier)
+        navigationController?.navigationBar.tintColor = .lightGray
+        navigationController?.navigationBar.topItem?.title = ""
     }
 }
 
