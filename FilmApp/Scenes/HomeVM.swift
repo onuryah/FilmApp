@@ -60,13 +60,13 @@ extension HomeVM: HomeBusinessLayer {
                 self.totalResults = Int(response.totalResults ?? "")
                 self.filmArray = (self.filmArray ?? []) + (response.search ?? [])
                 if response.search?.isEmpty ?? true {
-                    alertDelegate?.createAlert(alertTitle: "Alert", failMessage: response.error ?? "")
+                    alertDelegate?.createAlert(alertTitle: MainConstants.alert, failMessage: response.error ?? "")
                 } else {
                     self.delegate?.reloadData()
                     increasePageOffset()
                 }
             case .failure(let error):
-                alertDelegate?.createAlert(alertTitle: "Alert", failMessage: error.message)
+                alertDelegate?.createAlert(alertTitle: MainConstants.alert, failMessage: error.message)
             }
             acticityDelegate?.stopAnimating()
         }

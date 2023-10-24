@@ -42,7 +42,7 @@ extension DetailsVM: DetailsBusinessLayer {
                 self.details = response
                 delegate?.setViews()
             case .failure(let error):
-                alertDelegate?.createAlert(alertTitle: "Alert", failMessage: error.message)
+                alertDelegate?.createAlert(alertTitle: MainConstants.alert, failMessage: error.message)
             }
         }
     }
