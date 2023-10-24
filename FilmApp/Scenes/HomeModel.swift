@@ -22,20 +22,11 @@ struct Films: Codable {
 
 // MARK: - Search
 struct Film: Codable {
-    let title, year, imdbID: String?
-    let type: TypeEnum?
+    let imdbID: String?
     let poster: String?
 
     enum CodingKeys: String, CodingKey {
-        case title = "Title"
-        case year = "Year"
         case imdbID
-        case type = "Type"
         case poster = "Poster"
     }
-}
-
-enum TypeEnum: String, Codable {
-    case movie = "movie"
-    case series = "series"
 }

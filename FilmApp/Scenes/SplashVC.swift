@@ -22,9 +22,8 @@ class SplashVC: BaseVC {
         UIView.animate(withDuration: 1.0, animations: {
             self.splashAnimationView.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
         }) { (finished) in
-            // Büyütme tamamlandığında küçültme animasyonunu oluşturun
             UIView.animate(withDuration: 1.0, animations: {
-                self.splashAnimationView.transform = CGAffineTransform.identity // Başlangıç ölçekleme
+                self.splashAnimationView.transform = CGAffineTransform.identity
             })
         }
     }

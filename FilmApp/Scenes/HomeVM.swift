@@ -12,6 +12,14 @@ protocol HomeDisplayLayer {
     func push(controller: UIViewController)
 }
 
+protocol HomeTableViewDelegate: AnyObject {
+    func reloadData()
+}
+
+protocol ActicityIndicatorDelegate: AnyObject {
+    func stopAnimating()
+}
+
 protocol HomeBusinessLayer {
     var filmArray: [Film]? { get set }
     var searchBarQuery: String? { get set}
@@ -26,23 +34,17 @@ protocol HomeBusinessLayer {
     func needToFetchMore(indexPath: Int) -> Bool
 }
 
-protocol HomeTableViewDelegate: AnyObject {
-    func reloadData()
-}
-
-protocol ActicityIndicatorDelegate: AnyObject {
-    func stopAnimating()
-}
-
 final class HomeVM {
-    var searchBarQuery: String?
-    private var pageOffSet: String = "1"
-    var filmArray: [Film]?
-    private let networkManager: NetworkManager<MainEndpointItem> = NetworkManager()
     weak var delegate: HomeTableViewDelegate?
+    weak var acticityDelegate: ActicityIndicatorDelegate?
     var view: HomeDisplayLayer?
     var alertDelegate: BaseDelegateProtocol?
-    weak var acticityDelegate: ActicityIndicatorDelegate?
+    
+    var searchBarQuery: String?
+    var filmArray: [Film]?
+    private var pageOffSet: String = "1"
+    private var totalResults: Int?
+    private let networkManager: NetworkManager<MainEndpointItem> = NetworkManager()
     
     private func increasePageOffset() {
         pageOffSet = String((Int(pageOffSet) ?? 0) + 1)
@@ -55,6 +57,7 @@ extension HomeVM: HomeBusinessLayer {
             guard let self = self else { return }
             switch result {
             case .success(let response):
+                self.totalResults = Int(response.totalResults ?? "")
                 self.filmArray = (self.filmArray ?? []) + (response.search ?? [])
                 if response.search?.isEmpty ?? true {
                     alertDelegate?.createAlert(alertTitle: "Alert", failMessage: response.error ?? "")
@@ -101,12 +104,8 @@ extension HomeVM: HomeBusinessLayer {
     }
     
     func needToFetchMore(indexPath: Int) -> Bool {
-        if let content = filmArray {
-            if indexPath == content.count - 1 {
-                fetchIfNeeded(searchQuery: searchBarQuery ?? "")
-                return true
-            }
-        }
-        return false
+        guard let content = filmArray, indexPath == content.count - 1, filmArray?.count != totalResults else { return false }
+        fetchIfNeeded(searchQuery: searchBarQuery ?? "")
+        return true
     }
 }

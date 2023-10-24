@@ -153,7 +153,6 @@
 		A271A5542AE02C4E0086CC20 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				A271A5582AE02C810086CC20 /* Model */,
 				A271A5572AE02C7C0086CC20 /* View */,
 				A271A5592AE02C860086CC20 /* ViewModel */,
 			);
@@ -188,13 +187,6 @@
 				A271A5422AE02C1D0086CC20 /* SplashVC.swift */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		A271A5582AE02C810086CC20 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		A271A5592AE02C860086CC20 /* ViewModel */ = {

@@ -18,7 +18,6 @@ enum MainEndpointItem: Endpoint {
         }
     }
     
-    
     var method: HTTPMethod {
         switch self {
         default: return .get

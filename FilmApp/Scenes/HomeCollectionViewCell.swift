@@ -11,11 +11,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var filmImage: UIImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     func populate(film: Film?) {
         SDWebImageHelper.shared.setImage(view: filmImage, urlString: film?.poster ?? "")
     }

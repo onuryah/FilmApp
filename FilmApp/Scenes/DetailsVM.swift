@@ -14,6 +14,7 @@ protocol DetailsBusinessLayer {
     var delegate: ViewSetterDelegate? { get set }
     
     func fetch()
+    func logSelectedFilm()
 }
 
 protocol ViewSetterDelegate {
@@ -21,11 +22,11 @@ protocol ViewSetterDelegate {
 }
 
 class DetailsVM {
-    var filmId: String
     var networkManager: NetworkManager<DetailsEndpointItem> = NetworkManager()
-    var details: Details?
     var alertDelegate: BaseDelegateProtocol?
     var delegate: ViewSetterDelegate?
+    var details: Details?
+    var filmId: String
     
     init(filmId: String) {
         self.filmId = filmId
@@ -43,6 +44,14 @@ extension DetailsVM: DetailsBusinessLayer {
             case .failure(let error):
                 alertDelegate?.createAlert(alertTitle: "Alert", failMessage: error.message)
             }
+        }
+    }
+    
+    func logSelectedFilm() {
+        if let title = details?.title {
+            AnalyticsHelper.shared.logEvent(event: AnaltyticsConstants.showed_film_details,
+                                            params: AnaltyticsConstants.selected_film,
+                                            value: title)
         }
     }
 

@@ -49,11 +49,7 @@ extension DetailsVC: ViewSetterDelegate {
         awardsLabel.text = details?.awards
         collectionView.reloadData()
         
-        if let title = details?.title {
-            AnalyticsHelper.shared.logEvent(event: AnaltyticsConstants.showed_film_details,
-                                            params: AnaltyticsConstants.selected_film,
-                                            value: title)
-        }
+        viewModel?.logSelectedFilm()
     }
 }
 
