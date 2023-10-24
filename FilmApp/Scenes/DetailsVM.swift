@@ -9,7 +9,6 @@ import Foundation
 
 protocol DetailsBusinessLayer: AnyObject {
     var view: DetailsDisplayLayer? { get set }
-    var ratings: [Rating] { get }
     
     func fetch()
 }
@@ -24,7 +23,6 @@ final class DetailsVM {
     private var networkManager: NetworkManager<DetailsEndpointItem> = NetworkManager()
     
     private let filmId: String
-    var ratings: [Rating] = []
     
     init(filmId: String) {
         self.filmId = filmId
@@ -37,8 +35,9 @@ extension DetailsVM: DetailsBusinessLayer {
             guard let self = self else { return }
             switch result {
             case .success(let response):
+//                self.ratings = response.ratings ?? []
                 self.view?.showDetails(details: response)
-                self.ratings = response.ratings ?? []
+                self.view?.setCollectionData(with: response.ratings ?? [])
                 self.logSelectedFilm(title: response.title)
             case .failure(let error):
                 view?.createAlert(alertTitle: MainConstants.alert, failMessage: error.message)

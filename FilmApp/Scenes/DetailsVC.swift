@@ -11,6 +11,7 @@ import Lottie
 
 protocol DetailsDisplayLayer: BaseDelegateProtocol {
     func showDetails(details: Details)
+    func setCollectionData(with ratings: [Rating])
 }
 
 final class DetailsVC: BaseVC {
@@ -25,6 +26,7 @@ final class DetailsVC: BaseVC {
     @IBOutlet weak private var waitingView: UIView!
     @IBOutlet weak private var animationView: LottieAnimationView!
     var viewModel: DetailsBusinessLayer?
+    private let dataSource = DetailsCollectionDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,11 @@ final class DetailsVC: BaseVC {
 }
 
 extension DetailsVC: DetailsDisplayLayer {
+    func setCollectionData(with ratings: [Rating]) {
+        dataSource.ratings = ratings
+        collectionView.reloadData()
+    }
+    
     func showDetails(details: Details) {
         nameLabel.text = details.title
         yearLabel.text = details.year
@@ -48,26 +55,13 @@ extension DetailsVC: DetailsDisplayLayer {
     }
 }
 
-extension DetailsVC: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.ratings.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsCollectionViewCell.identifier, for: indexPath) as! DetailsCollectionViewCell
-        let model = viewModel?.ratings[indexPath.row]
-        cell.populate(model: model)
-        return cell
-    }
-}
-
 private extension DetailsVC {
-    private func setDelegates() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
+    func setDelegates() {
+        collectionView.delegate = dataSource
+        collectionView.dataSource = dataSource
     }
     
-    private func setup() {
+    func setup() {
         viewModel?.view = self
         
         collectionView.register(DetailsCollectionViewCell.nib, forCellWithReuseIdentifier: DetailsCollectionViewCell.identifier)
@@ -76,7 +70,7 @@ private extension DetailsVC {
         navigationController?.navigationBar.topItem?.title = ""
     }
 
-    private func setLottie() {
+    func setLottie() {
         animationView.animation = LottieAnimation.named("lottie")
         animationView.play()
         animationView.loopMode = .loop
