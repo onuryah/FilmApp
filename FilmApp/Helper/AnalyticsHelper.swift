@@ -5,7 +5,6 @@
 //  Created by OnurAlp on 23.10.2023.
 //
 
-import Foundation
 import FirebaseAnalytics
 
 enum AnaltyticsConstants: String {

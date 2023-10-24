@@ -5,8 +5,6 @@
 //  Created by OnurAlp on 20.10.2023.
 //
 
-import Foundation
-
 // MARK: - Details
 struct Details: Codable {
     let title, year: String?

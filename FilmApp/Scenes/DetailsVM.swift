@@ -5,8 +5,6 @@
 //  Created by OnurAlp on 20.10.2023.
 //
 
-import Foundation
-
 protocol DetailsBusinessLayer: AnyObject {
     var view: DetailsDisplayLayer? { get set }
     

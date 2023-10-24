@@ -5,7 +5,6 @@
 //  Created by OnurAlp on 20.10.2023.
 //
 
-import Foundation
 import UIKit
 import Lottie
 

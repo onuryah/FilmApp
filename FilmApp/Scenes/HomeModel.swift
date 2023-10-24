@@ -5,8 +5,6 @@
 //  Created by OnurAlp on 19.10.2023.
 //
 
-import Foundation
-
 // MARK: - Films
 struct Films: Codable {
     let search: [Film]?

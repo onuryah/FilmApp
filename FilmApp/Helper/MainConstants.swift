@@ -5,8 +5,6 @@
 //  Created by OnurAlp on 24.10.2023.
 //
 
-import Foundation
-
 struct MainConstants {
     static let couldntFindRemoteConfig = "Couldn't find remote config"
     static let fail = "Fail"

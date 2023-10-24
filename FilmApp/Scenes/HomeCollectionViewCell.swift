@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var filmImage: UIImageView!
     
     func populate(film: Film?) {
-        SDWebImageHelper.shared.setImage(view: filmImage, urlString: film?.poster ?? "")
+        filmImage.sd_setImage(with: film?.poster.URLFormat)
     }
 
 }
