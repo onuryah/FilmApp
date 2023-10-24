@@ -33,7 +33,7 @@ extension HomeVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         activityIndicator.startAnimating()
-        let searchBarQuery = "?s=\(searchBar.text ?? "")&apikey=b508dfa4&page=1"
+        let searchBarQuery = searchBar.text ?? ""
         viewModel?.searchBarQuery = searchBarQuery
         viewModel?.fetchIfNeeded(searchQuery: searchBarQuery)
     }

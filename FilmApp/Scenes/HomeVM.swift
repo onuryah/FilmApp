@@ -39,7 +39,7 @@ final class HomeVM {
 
 extension HomeVM: HomeBusinessLayer {
     private func fetch() {
-        networkManager.request(endpoint: .upcoming(query: searchBarQuery ?? ""), type: Films.self) { [weak self] result in
+        networkManager.request(endpoint: .upcoming(query: searchBarQuery ?? "", page: "1"), type: Films.self) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):
@@ -56,7 +56,7 @@ extension HomeVM: HomeBusinessLayer {
     }
     
     private func checkSearchBarEmpty() -> Bool {
-        let isSearchBarEmpty = searchBarQuery == "?s=&apikey=b508dfa4&page=1"
+        let isSearchBarEmpty = searchBarQuery == ""
         if isSearchBarEmpty {
             self.filmArray?.removeAll()
             self.delegate?.reloadData()
@@ -79,7 +79,7 @@ extension HomeVM: HomeBusinessLayer {
     }
     
     func navigateToDetails(filmId: String) {
-        let viewModel = DetailsVM(filmId: filmId, networkManager: networkManager)
+        let viewModel = DetailsVM(filmId: filmId)
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let resultViewController = storyBoard.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsVC
         resultViewController.viewModel = viewModel

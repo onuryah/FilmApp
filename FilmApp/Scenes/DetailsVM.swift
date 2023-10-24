@@ -22,14 +22,13 @@ protocol ViewSetterDelegate {
 
 class DetailsVM {
     var filmId: String
-    var networkManager: NetworkManager<MainEndpointItem>
+    var networkManager: NetworkManager<DetailsEndpointItem> = NetworkManager()
     var details: Details?
     var alertDelegate: BaseDelegateProtocol?
     var delegate: ViewSetterDelegate?
     
-    init(filmId: String, networkManager: NetworkManager<MainEndpointItem>) {
+    init(filmId: String) {
         self.filmId = filmId
-        self.networkManager = networkManager
     }
 }
 

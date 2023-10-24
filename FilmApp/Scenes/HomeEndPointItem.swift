@@ -7,16 +7,17 @@
 
 enum MainEndpointItem: Endpoint {
     
-    case upcoming(query: String)
+    case upcoming(query: String, page: String)
     
     var baseUrl: String { ApiConstant.BASE_URL }
     
     var path: String {
         switch self {
-        case .upcoming(let query):
-            return query
+        case .upcoming(let query, let page):
+            return ApiConstant.getPathForHomeService(upcoming: query, page: page)
         }
     }
+    
     
     var method: HTTPMethod {
         switch self {
