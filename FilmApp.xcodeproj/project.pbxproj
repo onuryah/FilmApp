@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		A22E915C2AE69DA3007E9DD5 /* DetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22E915A2AE69DA3007E9DD5 /* DetailsCollectionViewCell.swift */; };
 		A22E915D2AE69DA3007E9DD5 /* DetailsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A22E915B2AE69DA3007E9DD5 /* DetailsCollectionViewCell.xib */; };
-		A22E91632AE70673007E9DD5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A22E91622AE70673007E9DD5 /* FirebaseAnalytics */; };
 		A22E91652AE708E1007E9DD5 /* AnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22E91642AE708E1007E9DD5 /* AnalyticsHelper.swift */; };
+		A231D2AF2AE7E34A0093234B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A231D2AE2AE7E34A0093234B /* FirebaseAnalytics */; };
+		A231D2B12AE7E34A0093234B /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = A231D2B02AE7E34A0093234B /* FirebaseMessaging */; };
 		A23E51CE2AE07A6200A4F61D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23E51CD2AE07A6200A4F61D /* HomeVC.swift */; };
 		A265FA762AE1593F0084451E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = A265FA752AE1593F0084451E /* SDWebImage */; };
 		A265FA792AE1597A0084451E /* SDWebImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A265FA782AE1597A0084451E /* SDWebImageHelper.swift */; };
@@ -43,6 +44,7 @@
 		A22E915A2AE69DA3007E9DD5 /* DetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		A22E915B2AE69DA3007E9DD5 /* DetailsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCollectionViewCell.xib; sourceTree = "<group>"; };
 		A22E91642AE708E1007E9DD5 /* AnalyticsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsHelper.swift; sourceTree = "<group>"; };
+		A231D2B22AE7E4440093234B /* FilmApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FilmApp.entitlements; sourceTree = "<group>"; };
 		A23E51CD2AE07A6200A4F61D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		A265FA782AE1597A0084451E /* SDWebImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDWebImageHelper.swift; sourceTree = "<group>"; };
 		A271A53B2AE02C1D0086CC20 /* FilmApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,9 +78,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A231D2B12AE7E34A0093234B /* FirebaseMessaging in Frameworks */,
 				A265FA762AE1593F0084451E /* SDWebImage in Frameworks */,
 				A271A56A2AE031760086CC20 /* Alamofire in Frameworks */,
-				A22E91632AE70673007E9DD5 /* FirebaseAnalytics in Frameworks */,
+				A231D2AF2AE7E34A0093234B /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +116,7 @@
 		A271A53D2AE02C1D0086CC20 /* FilmApp */ = {
 			isa = PBXGroup;
 			children = (
+				A231D2B22AE7E4440093234B /* FilmApp.entitlements */,
 				A265FA772AE159680084451E /* Helper */,
 				A271A54C2AE02C1E0086CC20 /* Info.plist */,
 				A2C9CEA12AE719F400DAD354 /* GoogleService-Info.plist */,
@@ -307,7 +311,8 @@
 			packageProductDependencies = (
 				A271A5692AE031760086CC20 /* Alamofire */,
 				A265FA752AE1593F0084451E /* SDWebImage */,
-				A22E91622AE70673007E9DD5 /* FirebaseAnalytics */,
+				A231D2AE2AE7E34A0093234B /* FirebaseAnalytics */,
+				A231D2B02AE7E34A0093234B /* FirebaseMessaging */,
 			);
 			productName = FilmApp;
 			productReference = A271A53B2AE02C1D0086CC20 /* FilmApp.app */;
@@ -340,7 +345,7 @@
 			packageReferences = (
 				A271A5682AE031760086CC20 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				A265FA742AE1593E0084451E /* XCRemoteSwiftPackageReference "SDWebImage" */,
-				A22E91612AE70673007E9DD5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				A231D2AD2AE7E34A0093234B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = A271A53C2AE02C1D0086CC20 /* Products */;
 			projectDirPath = "";
@@ -537,6 +542,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FilmApp/FilmApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -565,6 +571,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FilmApp/FilmApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -612,7 +619,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A22E91612AE70673007E9DD5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		A231D2AD2AE7E34A0093234B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
@@ -639,10 +646,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A22E91622AE70673007E9DD5 /* FirebaseAnalytics */ = {
+		A231D2AE2AE7E34A0093234B /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A22E91612AE70673007E9DD5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = A231D2AD2AE7E34A0093234B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
+		};
+		A231D2B02AE7E34A0093234B /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A231D2AD2AE7E34A0093234B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 		A265FA752AE1593F0084451E /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
