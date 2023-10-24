@@ -12,8 +12,13 @@ struct ApiConstant {
     static let API_KEY_VALUE = "b508dfa4"
     static let SEARCH_TERM = "?s="
     static let Page = "&page="
+    static let DETAILS_SEARCH_TERM = "?i="
     
     static func getPathForHomeService(upcoming: String, page: String) -> String {
         SEARCH_TERM+upcoming+API_KEY+API_KEY_VALUE+Page+page
+    }
+    
+    static func getPathForDetailsService(upcoming: String) -> String {
+        DETAILS_SEARCH_TERM+upcoming+API_KEY+API_KEY_VALUE
     }
 }

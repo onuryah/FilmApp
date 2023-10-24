@@ -14,7 +14,7 @@ enum DetailsEndpointItem: Endpoint {
     var path: String {
         switch self {
         case .upcoming(let query):
-            return query
+            return ApiConstant.getPathForDetailsService(upcoming: query)
         }
     }
     

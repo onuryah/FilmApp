@@ -26,6 +26,7 @@ extension HomeVC: UISearchBarDelegate {
         viewModel?.view = self
         viewModel?.delegate = self
         viewModel?.alertDelegate = self
+        viewModel?.acticityDelegate = self
         activityIndicator.hidesWhenStopped = true
         setDelegates()
         collectionView.register(HomeCollectionViewCell.nib, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
@@ -59,6 +60,12 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if viewModel?.needToFetchMore(indexPath: indexPath.item) ?? false {
+            activityIndicator.startAnimating()
+        }
+    }
 }
 
 extension HomeVC: UICollectionViewDelegateFlowLayout {
@@ -70,12 +77,17 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
 extension HomeVC: HomeTableViewDelegate {
     func reloadData() {
         collectionView.reloadData()
-        activityIndicator.stopAnimating()
     }
 }
 
 extension HomeVC: HomeDisplayLayer {
     func push(controller: UIViewController) {
         show(controller, sender: nil)
+    }
+}
+
+extension HomeVC: ActicityIndicatorDelegate {
+    func stopAnimating() {
+        activityIndicator.stopAnimating()
     }
 }

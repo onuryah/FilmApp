@@ -34,8 +34,7 @@ class DetailsVM {
 
 extension DetailsVM: DetailsBusinessLayer {
     func fetch() {
-        let film = "?i=\(filmId)&apikey=b508dfa4"
-        networkManager.request(endpoint: .upcoming(query: film), type: Details.self) { [weak self] result in
+        networkManager.request(endpoint: .upcoming(query: filmId), type: Details.self) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):
