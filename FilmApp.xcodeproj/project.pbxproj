@@ -13,6 +13,8 @@
 		A231D2B52AE827770093234B /* lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = A231D2B42AE827770093234B /* lottie.json */; };
 		A231D2B82AE828250093234B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A231D2B72AE828250093234B /* Lottie */; };
 		A23E51CE2AE07A6200A4F61D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23E51CD2AE07A6200A4F61D /* HomeVC.swift */; };
+		A256A1A32AE8506F000F2AF6 /* HomeCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A256A1A22AE8506F000F2AF6 /* HomeCollectionDataSource.swift */; };
+		A256A1AA2AE88683000F2AF6 /* Extension+OptionalString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A256A1A92AE88683000F2AF6 /* Extension+OptionalString.swift */; };
 		A265FA762AE1593F0084451E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = A265FA752AE1593F0084451E /* SDWebImage */; };
 		A265FA792AE1597A0084451E /* SDWebImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A265FA782AE1597A0084451E /* SDWebImageHelper.swift */; };
 		A271A53F2AE02C1D0086CC20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A271A53E2AE02C1D0086CC20 /* AppDelegate.swift */; };
@@ -52,6 +54,8 @@
 		A231D2B22AE7E4440093234B /* FilmApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FilmApp.entitlements; sourceTree = "<group>"; };
 		A231D2B42AE827770093234B /* lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottie.json; sourceTree = "<group>"; };
 		A23E51CD2AE07A6200A4F61D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		A256A1A22AE8506F000F2AF6 /* HomeCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionDataSource.swift; sourceTree = "<group>"; };
+		A256A1A92AE88683000F2AF6 /* Extension+OptionalString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+OptionalString.swift"; sourceTree = "<group>"; };
 		A265FA782AE1597A0084451E /* SDWebImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDWebImageHelper.swift; sourceTree = "<group>"; };
 		A271A53B2AE02C1D0086CC20 /* FilmApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A271A53E2AE02C1D0086CC20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +110,22 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
+		A256A1A12AE85062000F2AF6 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				A256A1A22AE8506F000F2AF6 /* HomeCollectionDataSource.swift */,
+			);
+			name = DataSource;
+			sourceTree = "<group>";
+		};
+		A256A1A82AE88658000F2AF6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A256A1A92AE88683000F2AF6 /* Extension+OptionalString.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A265FA772AE159680084451E /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +156,7 @@
 		A271A53D2AE02C1D0086CC20 /* FilmApp */ = {
 			isa = PBXGroup;
 			children = (
+				A256A1A82AE88658000F2AF6 /* Extensions */,
 				A231D2B32AE8276A0093234B /* Lottie */,
 				A231D2B22AE7E4440093234B /* FilmApp.entitlements */,
 				A265FA772AE159680084451E /* Helper */,
@@ -183,6 +204,7 @@
 		A271A5552AE02C550086CC20 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				A256A1A12AE85062000F2AF6 /* DataSource */,
 				A2A321702AE13B7200EB7AAD /* EndPointItem */,
 				A271A55C2AE02CD30086CC20 /* ViewModel */,
 				A271A55B2AE02CCE0086CC20 /* View */,
@@ -410,7 +432,9 @@
 				A2941C362AE2CDC500428E4B /* DetailsVC.swift in Sources */,
 				A22E915C2AE69DA3007E9DD5 /* DetailsCollectionViewCell.swift in Sources */,
 				A271A5412AE02C1D0086CC20 /* SceneDelegate.swift in Sources */,
+				A256A1AA2AE88683000F2AF6 /* Extension+OptionalString.swift in Sources */,
 				A22E91652AE708E1007E9DD5 /* AnalyticsHelper.swift in Sources */,
+				A256A1A32AE8506F000F2AF6 /* HomeCollectionDataSource.swift in Sources */,
 				A271A5652AE031200086CC20 /* EndPoint.swift in Sources */,
 				A2C6CD022AE8344600D7A7C0 /* RemoteConfigHelper.swift in Sources */,
 				A2A321742AE13C8F00EB7AAD /* HomeModel.swift in Sources */,

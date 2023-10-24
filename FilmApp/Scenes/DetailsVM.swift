@@ -7,26 +7,24 @@
 
 import Foundation
 
-protocol DetailsBusinessLayer {
-    var filmId: String { get set }
-    var alertDelegate: BaseDelegateProtocol? { get set }
-    var details: Details? { get set }
-    var delegate: ViewSetterDelegate? { get set }
+protocol DetailsBusinessLayer: AnyObject {
+    var view: DetailsDisplayLayer? { get set }
+    var ratings: [Rating] { get }
     
     func fetch()
-    func logSelectedFilm()
 }
 
-protocol ViewSetterDelegate {
+protocol ViewSetterDelegate: AnyObject {
     func setViews()
 }
 
-class DetailsVM {
-    var networkManager: NetworkManager<DetailsEndpointItem> = NetworkManager()
-    var alertDelegate: BaseDelegateProtocol?
-    var delegate: ViewSetterDelegate?
-    var details: Details?
-    var filmId: String
+final class DetailsVM {
+    weak var view: DetailsDisplayLayer?
+    
+    private var networkManager: NetworkManager<DetailsEndpointItem> = NetworkManager()
+    
+    private let filmId: String
+    var ratings: [Rating] = []
     
     init(filmId: String) {
         self.filmId = filmId
@@ -39,20 +37,20 @@ extension DetailsVM: DetailsBusinessLayer {
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                self.details = response
-                delegate?.setViews()
+                self.view?.showDetails(details: response)
+                self.ratings = response.ratings ?? []
+                self.logSelectedFilm(title: response.title)
             case .failure(let error):
-                alertDelegate?.createAlert(alertTitle: MainConstants.alert, failMessage: error.message)
+                view?.createAlert(alertTitle: MainConstants.alert, failMessage: error.message)
             }
         }
     }
     
-    func logSelectedFilm() {
-        if let title = details?.title {
-            AnalyticsHelper.shared.logEvent(event: AnaltyticsConstants.showed_film_details,
-                                            params: AnaltyticsConstants.selected_film,
-                                            value: title)
-        }
+    // MARK: Private
+    func logSelectedFilm(title: String?) {
+        guard let title else { return }
+        AnalyticsHelper.shared.logEvent(event: AnaltyticsConstants.showed_film_details,
+                                        params: AnaltyticsConstants.selected_film,
+                                        value: title)
     }
-
 }

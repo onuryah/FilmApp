@@ -7,7 +7,7 @@
 
 enum MainEndpointItem: Endpoint {
     
-    case upcoming(query: String, page: String)
+    case upcoming(query: String, page: Int)
     
     var baseUrl: String { ApiConstant.BASE_URL }
     

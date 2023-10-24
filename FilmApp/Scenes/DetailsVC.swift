@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 import Lottie
 
+protocol DetailsDisplayLayer: BaseDelegateProtocol {
+    func showDetails(details: Details)
+}
+
 final class DetailsVC: BaseVC {
     @IBOutlet weak private var filmImage: UIImageView!
     @IBOutlet weak private var yearLabel: UILabel!
@@ -28,55 +32,53 @@ final class DetailsVC: BaseVC {
         setDelegates()
         viewModel?.fetch()
     }
+}
+
+extension DetailsVC: DetailsDisplayLayer {
+    func showDetails(details: Details) {
+        nameLabel.text = details.title
+        yearLabel.text = details.year
+        genreLabel.text = details.genre
+        directorLabel.text = details.director
+        plotLabel.text = details.plot
+        awardsLabel.text = details.awards
+        waitingView.isHidden = true
+        filmImage.sd_setImage(with: details.poster.URLFormat)
+        collectionView.reloadData()
+    }
+}
+
+extension DetailsVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel?.ratings.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsCollectionViewCell.identifier, for: indexPath) as! DetailsCollectionViewCell
+        let model = viewModel?.ratings[indexPath.row]
+        cell.populate(model: model)
+        return cell
+    }
+}
+
+private extension DetailsVC {
+    private func setDelegates() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
     
     private func setup() {
-        viewModel?.alertDelegate = self
-        viewModel?.delegate = self
+        viewModel?.view = self
         
         collectionView.register(DetailsCollectionViewCell.nib, forCellWithReuseIdentifier: DetailsCollectionViewCell.identifier)
         setLottie()
         navigationController?.navigationBar.tintColor = .lightGray
         navigationController?.navigationBar.topItem?.title = ""
     }
-    
+
     private func setLottie() {
         animationView.animation = LottieAnimation.named("lottie")
         animationView.play()
         animationView.loopMode = .loop
-    }
-}
-
-extension DetailsVC: ViewSetterDelegate {
-    func setViews() {
-        waitingView.isHidden = true
-        SDWebImageHelper.shared.setImage(view: filmImage, urlString: viewModel?.details?.poster ?? "")
-        let details = viewModel?.details
-        nameLabel.text = details?.title
-        yearLabel.text = details?.year
-        genreLabel.text = details?.genre
-        directorLabel.text = details?.director
-        plotLabel.text = details?.plot
-        awardsLabel.text = details?.awards
-        collectionView.reloadData()
-        
-        viewModel?.logSelectedFilm()
-    }
-}
-
-extension DetailsVC: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.details?.ratings?.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsCollectionViewCell.identifier, for: indexPath) as! DetailsCollectionViewCell
-        let model = viewModel?.details?.ratings?[indexPath.row]
-        cell.populate(model: model)
-        return cell
-    }
-    
-    private func setDelegates() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
     }
 }

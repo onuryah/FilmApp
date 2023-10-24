@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol BaseDelegateProtocol {
+protocol BaseDelegateProtocol: AnyObject {
     func createAlert(alertTitle: String, failMessage: String)
 }
 

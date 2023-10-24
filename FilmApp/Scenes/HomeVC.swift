@@ -7,76 +7,41 @@
 
 import UIKit
 
+protocol HomeDisplayLayer: BaseDelegateProtocol {
+    func push(controller: UIViewController)
+    func setCollectionData(with films: [Film])
+    func startAnimating()
+    func stopAnimating()
+}
+
 class HomeVC: BaseVC {
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak private var searchBar: UISearchBar!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    var viewModel: HomeBusinessLayer?
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    private let dataSource = HomeCollectionDataSource()
+    
+    var viewModel: HomeBusinessLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        setupUI()
     }
 }
 
-extension HomeVC: UISearchBarDelegate {
-    private func setup() {
-        self.navigationItem.setHidesBackButton(true, animated: false)
+private extension HomeVC {
+    func setupUI() {
+        setupCollectionView()
+        viewModel.view = self
         searchBar.delegate = self
-        viewModel?.view = self
-        viewModel?.delegate = self
-        viewModel?.alertDelegate = self
-        viewModel?.acticityDelegate = self
         activityIndicator.hidesWhenStopped = true
-        setDelegates()
+        self.navigationItem.setHidesBackButton(true, animated: false)
+    }
+    
+    func setupCollectionView() {
         collectionView.register(HomeCollectionViewCell.nib, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        activityIndicator.startAnimating()
-        let searchBarQuery = searchBar.text ?? ""
-        viewModel?.searchBarQuery = searchBarQuery
-        viewModel?.fetchIfNeeded(searchQuery: searchBarQuery)
-    }
-}
-
-extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.filmArray?.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as! HomeCollectionViewCell
-        let model = viewModel?.filmArray?[indexPath.row]
-        cell.populate(film: model)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel?.navigateToDetails(filmId: viewModel?.filmArray?[indexPath.row].imdbID ?? "")
-    }
-
-    private func setDelegates() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if viewModel?.needToFetchMore(indexPath: indexPath.item) ?? false {
-            activityIndicator.startAnimating()
-        }
-    }
-}
-
-extension HomeVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        viewModel?.findCollectionCellSize(collectionViewSize: collectionView.bounds.size) ?? CGSize(width: 0, height: 0)
-    }
-}
-
-extension HomeVC: HomeTableViewDelegate {
-    func reloadData() {
-        collectionView.reloadData()
+        collectionView.delegate = dataSource
+        collectionView.dataSource = dataSource
+        dataSource.delegate = self
     }
 }
 
@@ -84,10 +49,37 @@ extension HomeVC: HomeDisplayLayer {
     func push(controller: UIViewController) {
         show(controller, sender: nil)
     }
-}
-
-extension HomeVC: ActicityIndicatorDelegate {
+    
+    func startAnimating() {
+        activityIndicator.startAnimating()
+    }
+    
     func stopAnimating() {
         activityIndicator.stopAnimating()
+    }
+    
+    func setCollectionData(with films: [Film]) {
+        dataSource.films = films
+        collectionView.reloadData()
+    }
+}
+
+extension HomeVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.search(query: searchText)
+    }
+}
+
+extension HomeVC: HomeCollectionDataSourceDelegate {
+    func didSelect(imdbId: String) {
+        let viewModel = DetailsVM(filmId: imdbId)
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsVC
+        resultViewController.viewModel = viewModel
+        push(controller: resultViewController)
+    }
+    
+    func checkNextPage() {
+        viewModel.checkNextPage()
     }
 }

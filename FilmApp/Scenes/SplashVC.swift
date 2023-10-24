@@ -7,19 +7,33 @@
 
 import UIKit
 
-class SplashVC: BaseVC {
-    @IBOutlet weak var splashAnimationView: UIImageView!
-    @IBOutlet weak var remoteLabel: UILabel!
+protocol SplashDisplayLayer: BaseDelegateProtocol {
+    func showMainPage()
+    func transmitRemoteConfig(value: String)
+}
+
+final class SplashVC: BaseVC {
+    
+    @IBOutlet private weak var splashAnimationView: UIImageView!
+    @IBOutlet private weak var remoteLabel: UILabel!
+    
     var viewModel: SplashBusinessLayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        setupUI()
         startAnimating()
+    }
+}
+
+private extension SplashVC {
+    func setupUI() {
+        viewModel = SplashVM()
+        viewModel?.view = self
         viewModel?.checkWhetherInternetConnection()
     }
     
-    private func startAnimating() {
+    func startAnimating() {
         UIView.animate(withDuration: 1.0, animations: {
             self.splashAnimationView.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
         }) { (finished) in
@@ -28,26 +42,22 @@ class SplashVC: BaseVC {
             })
         }
     }
-    
-    private func setup() {
-        viewModel = SplashVM()
-        viewModel?.alertDelegate = self
-        viewModel?.view = self
-        viewModel?.remoteConfigDelegate = self
-    }
 }
 
 extension SplashVC: SplashDisplayLayer{
     func push(controller: UIViewController) {
         show(controller, sender: nil)
     }
-}
-
-extension SplashVC: TransmitRemoteConfigDelegate {
+    
     func transmitRemoteConfig(value: String) {
-        DispatchQueue.main.async {
-            self.remoteLabel.text = value
-        }
+        self.remoteLabel.text = value
+    }
+    
+    func showMainPage() {
+        let viewModel = HomeVM()
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+        resultViewController.viewModel = viewModel
+        push(controller: resultViewController)
     }
 }
-

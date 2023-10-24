@@ -14,8 +14,10 @@ struct ApiConstant {
     static let Page = "&page="
     static let DETAILS_SEARCH_TERM = "?i="
     
-    static func getPathForHomeService(upcoming: String, page: String) -> String {
-        SEARCH_TERM+upcoming+API_KEY+API_KEY_VALUE+Page+page
+    static func getPathForHomeService(upcoming: String, page: Int) -> String {
+        SEARCH_TERM + upcoming + API_KEY + API_KEY_VALUE + Page + "\(page)"
+        let urlEncodedSearch = upcoming.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        return "?s=\(urlEncodedSearch)&apikey=\(API_KEY_VALUE)&page=\(page)"
     }
     
     static func getPathForDetailsService(upcoming: String) -> String {

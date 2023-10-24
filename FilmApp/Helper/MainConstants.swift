@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class MainConstants {
+struct MainConstants {
     static let couldntFindRemoteConfig = "Couldn't find remote config"
     static let fail = "Fail"
     static let checkTheInternet = "Please check your internet connection!"

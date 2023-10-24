@@ -6,106 +6,95 @@
 //
 
 import Foundation
-import UIKit
 
-protocol HomeDisplayLayer {
-    func push(controller: UIViewController)
-}
-
-protocol HomeTableViewDelegate: AnyObject {
-    func reloadData()
-}
-
-protocol ActicityIndicatorDelegate: AnyObject {
-    func stopAnimating()
-}
-
-protocol HomeBusinessLayer {
-    var filmArray: [Film]? { get set }
-    var searchBarQuery: String? { get set}
-    var delegate: HomeTableViewDelegate? { get set }
-    var acticityDelegate: ActicityIndicatorDelegate? { get set }
+protocol HomeBusinessLayer: AnyObject {
     var view: HomeDisplayLayer? { get set }
-    var alertDelegate: BaseDelegateProtocol? { get set }
     
-    func fetchIfNeeded(searchQuery: String)
-    func findCollectionCellSize(collectionViewSize: CGSize) -> CGSize
-    func navigateToDetails(filmId: String)
-    func needToFetchMore(indexPath: Int) -> Bool
+    func checkNextPage()
+    func search(query: String)
 }
 
 final class HomeVM {
-    weak var delegate: HomeTableViewDelegate?
-    weak var acticityDelegate: ActicityIndicatorDelegate?
-    var view: HomeDisplayLayer?
-    var alertDelegate: BaseDelegateProtocol?
+    weak var view: HomeDisplayLayer?
     
-    var searchBarQuery: String?
-    var filmArray: [Film]?
-    private var pageOffSet: String = "1"
+    private var films: [Film] = []
+    private var pageOffSet: Int = 1
     private var totalResults: Int?
     private let networkManager: NetworkManager<MainEndpointItem> = NetworkManager()
-    
-    private func increasePageOffset() {
-        pageOffSet = String((Int(pageOffSet) ?? 0) + 1)
-    }
+    private var lastSearchedValue: String?
+    private var timer: Timer?
 }
 
 extension HomeVM: HomeBusinessLayer {
-    private func fetch() {
-        networkManager.request(endpoint: .upcoming(query: searchBarQuery ?? "", page: pageOffSet), type: Films.self) { [weak self] result in
+    func search(query: String) {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { [weak self] timer in
+            guard let self = self else { return }
+            self.checkSearchTextChange(with: query)
+        }
+    }
+    
+    func checkNextPage() {
+        guard let totalResults,
+              let lastSearchedValue,
+              totalResults > films.count else { return }
+        fetch(with: lastSearchedValue)
+    }
+}
+
+private extension HomeVM {
+    func clearAll() {
+        films.removeAll()
+        view?.setCollectionData(with: films)
+    }
+    
+    func checkSearchTextChange(with query: String) {
+        if query.isEmpty {
+            clearAll()
+            return
+        }
+        
+        if lastSearchedValue == query {
+            return
+        }
+        
+        if lastSearchedValue != query {
+            lastSearchedValue = query
+            pageOffSet = 1
+            clearAll()
+        }
+        
+        fetch(with: query)
+    }
+    
+    func fetch(with query: String) {
+        view?.startAnimating()
+        networkManager.request(endpoint: .upcoming(query: query, page: pageOffSet),
+                               type: Films.self) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                self.totalResults = Int(response.totalResults ?? "")
-                self.filmArray = (self.filmArray ?? []) + (response.search ?? [])
-                if response.search?.isEmpty ?? true {
-                    alertDelegate?.createAlert(alertTitle: MainConstants.alert, failMessage: response.error ?? "")
-                } else {
-                    self.delegate?.reloadData()
-                    increasePageOffset()
-                }
+                self.handleSuccess(with: response)
             case .failure(let error):
-                alertDelegate?.createAlert(alertTitle: MainConstants.alert, failMessage: error.message)
+                self.view?.createAlert(alertTitle: MainConstants.alert,
+                                       failMessage: error.message)
             }
-            acticityDelegate?.stopAnimating()
+            self.view?.stopAnimating()
         }
     }
     
-    private func checkSearchBarEmpty() -> Bool {
-        let isSearchBarEmpty = searchBarQuery == ""
-        if isSearchBarEmpty {
-            self.filmArray?.removeAll()
-            self.delegate?.reloadData()
+    func handleSuccess(with response: Films) {
+        guard let newFilms = response.search,
+              let newTotalResults = response.totalResults,
+              !newFilms.isEmpty else {
+            view?.createAlert(alertTitle: MainConstants.alert,
+                              failMessage: response.error ?? "")
+            return
         }
-        return isSearchBarEmpty
-    }
-    
-    func fetchIfNeeded(searchQuery: String) {
-        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-            if searchQuery == self.searchBarQuery && !self.checkSearchBarEmpty() {
-                    self.fetch()
-            }
-        }
-    }
-    
-    func findCollectionCellSize(collectionViewSize: CGSize) -> CGSize {
-        let width = (collectionViewSize.width - 16) / 2
-        let height = (collectionViewSize.height - 32) / 2.5
-        return CGSize(width: width, height: height)
-    }
-    
-    func navigateToDetails(filmId: String) {
-        let viewModel = DetailsVM(filmId: filmId)
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsVC
-        resultViewController.viewModel = viewModel
-        self.view?.push(controller: resultViewController)
-    }
-    
-    func needToFetchMore(indexPath: Int) -> Bool {
-        guard let content = filmArray, indexPath == content.count - 1, filmArray?.count != totalResults else { return false }
-        fetchIfNeeded(searchQuery: searchBarQuery ?? "")
-        return true
+        
+        self.totalResults = Int(newTotalResults)
+        self.films.append(contentsOf: newFilms)
+        view?.setCollectionData(with: films)
+        pageOffSet += 1
     }
 }
