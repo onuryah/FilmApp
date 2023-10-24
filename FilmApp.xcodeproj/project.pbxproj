@@ -12,6 +12,8 @@
 		A22E91652AE708E1007E9DD5 /* AnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22E91642AE708E1007E9DD5 /* AnalyticsHelper.swift */; };
 		A231D2AF2AE7E34A0093234B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A231D2AE2AE7E34A0093234B /* FirebaseAnalytics */; };
 		A231D2B12AE7E34A0093234B /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = A231D2B02AE7E34A0093234B /* FirebaseMessaging */; };
+		A231D2B52AE827770093234B /* lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = A231D2B42AE827770093234B /* lottie.json */; };
+		A231D2B82AE828250093234B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A231D2B72AE828250093234B /* Lottie */; };
 		A23E51CE2AE07A6200A4F61D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23E51CD2AE07A6200A4F61D /* HomeVC.swift */; };
 		A265FA762AE1593F0084451E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = A265FA752AE1593F0084451E /* SDWebImage */; };
 		A265FA792AE1597A0084451E /* SDWebImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A265FA782AE1597A0084451E /* SDWebImageHelper.swift */; };
@@ -45,6 +47,7 @@
 		A22E915B2AE69DA3007E9DD5 /* DetailsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCollectionViewCell.xib; sourceTree = "<group>"; };
 		A22E91642AE708E1007E9DD5 /* AnalyticsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsHelper.swift; sourceTree = "<group>"; };
 		A231D2B22AE7E4440093234B /* FilmApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FilmApp.entitlements; sourceTree = "<group>"; };
+		A231D2B42AE827770093234B /* lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottie.json; sourceTree = "<group>"; };
 		A23E51CD2AE07A6200A4F61D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		A265FA782AE1597A0084451E /* SDWebImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDWebImageHelper.swift; sourceTree = "<group>"; };
 		A271A53B2AE02C1D0086CC20 /* FilmApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A231D2B82AE828250093234B /* Lottie in Frameworks */,
 				A231D2B12AE7E34A0093234B /* FirebaseMessaging in Frameworks */,
 				A265FA762AE1593F0084451E /* SDWebImage in Frameworks */,
 				A271A56A2AE031760086CC20 /* Alamofire in Frameworks */,
@@ -88,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A231D2B32AE8276A0093234B /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				A231D2B42AE827770093234B /* lottie.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		A265FA772AE159680084451E /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +128,7 @@
 		A271A53D2AE02C1D0086CC20 /* FilmApp */ = {
 			isa = PBXGroup;
 			children = (
+				A231D2B32AE8276A0093234B /* Lottie */,
 				A231D2B22AE7E4440093234B /* FilmApp.entitlements */,
 				A265FA772AE159680084451E /* Helper */,
 				A271A54C2AE02C1E0086CC20 /* Info.plist */,
@@ -305,6 +318,7 @@
 				A265FA752AE1593F0084451E /* SDWebImage */,
 				A231D2AE2AE7E34A0093234B /* FirebaseAnalytics */,
 				A231D2B02AE7E34A0093234B /* FirebaseMessaging */,
+				A231D2B72AE828250093234B /* Lottie */,
 			);
 			productName = FilmApp;
 			productReference = A271A53B2AE02C1D0086CC20 /* FilmApp.app */;
@@ -338,6 +352,7 @@
 				A271A5682AE031760086CC20 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				A265FA742AE1593E0084451E /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				A231D2AD2AE7E34A0093234B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				A231D2B62AE828250093234B /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = A271A53C2AE02C1D0086CC20 /* Products */;
 			projectDirPath = "";
@@ -358,6 +373,7 @@
 				A22E915D2AE69DA3007E9DD5 /* DetailsCollectionViewCell.xib in Resources */,
 				A271A5482AE02C1E0086CC20 /* Assets.xcassets in Resources */,
 				A271A5462AE02C1D0086CC20 /* Main.storyboard in Resources */,
+				A231D2B52AE827770093234B /* lottie.json in Resources */,
 				A2C9CEA22AE719F400DAD354 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -619,6 +635,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		A231D2B62AE828250093234B /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		A265FA742AE1593E0084451E /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
@@ -647,6 +671,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A231D2AD2AE7E34A0093234B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
+		};
+		A231D2B72AE828250093234B /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A231D2B62AE828250093234B /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		A265FA752AE1593F0084451E /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;

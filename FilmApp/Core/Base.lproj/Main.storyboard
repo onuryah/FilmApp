@@ -293,25 +293,48 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37W-2m-hVD">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="30s-Ee-Uc6" customClass="LottieAnimationView" customModule="Lottie">
+                                        <rect key="frame" x="147" y="388" width="120" height="120"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="91C-ar-qMQ"/>
+                                            <constraint firstAttribute="width" constant="120" id="fOY-zo-a3d"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="30s-Ee-Uc6" firstAttribute="centerY" secondItem="37W-2m-hVD" secondAttribute="centerY" id="HtZ-pi-JJd"/>
+                                    <constraint firstItem="30s-Ee-Uc6" firstAttribute="centerX" secondItem="37W-2m-hVD" secondAttribute="centerX" id="wKT-Kk-Lgd"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sIF-z2-bqY"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="37W-2m-hVD" firstAttribute="trailing" secondItem="sIF-z2-bqY" secondAttribute="trailing" id="1W5-Wy-aWo"/>
                             <constraint firstItem="Tug-3k-POn" firstAttribute="leading" secondItem="sIF-z2-bqY" secondAttribute="leading" constant="16" id="3YK-Qj-BHr"/>
                             <constraint firstItem="sIF-z2-bqY" firstAttribute="trailing" secondItem="PMc-JD-9EH" secondAttribute="trailing" constant="32" id="Bk8-ux-fEA"/>
                             <constraint firstItem="PMc-JD-9EH" firstAttribute="top" secondItem="Gnh-nc-SFS" secondAttribute="bottom" constant="16" id="FU5-q5-Hfw"/>
                             <constraint firstItem="Tug-3k-POn" firstAttribute="top" secondItem="sIF-z2-bqY" secondAttribute="top" constant="40" id="FxZ-nU-beD"/>
                             <constraint firstItem="Gnh-nc-SFS" firstAttribute="leading" secondItem="sIF-z2-bqY" secondAttribute="leading" constant="32" id="N6n-Nr-7by"/>
+                            <constraint firstItem="37W-2m-hVD" firstAttribute="top" secondItem="h7s-Qy-LBG" secondAttribute="top" id="NiR-nv-e1V"/>
                             <constraint firstItem="Gnh-nc-SFS" firstAttribute="top" secondItem="Tug-3k-POn" secondAttribute="bottom" constant="32" id="Rld-7K-JFo"/>
                             <constraint firstItem="sIF-z2-bqY" firstAttribute="bottom" secondItem="PMc-JD-9EH" secondAttribute="bottom" constant="32" id="akv-XP-nmp"/>
+                            <constraint firstItem="37W-2m-hVD" firstAttribute="leading" secondItem="sIF-z2-bqY" secondAttribute="leading" id="gSo-hx-4MU"/>
                             <constraint firstItem="sIF-z2-bqY" firstAttribute="trailing" secondItem="Tug-3k-POn" secondAttribute="trailing" constant="16" id="hFm-cp-rOm"/>
                             <constraint firstItem="Tug-3k-POn" firstAttribute="height" secondItem="h7s-Qy-LBG" secondAttribute="height" multiplier="0.25" id="miD-AQ-e5w"/>
+                            <constraint firstAttribute="bottom" secondItem="37W-2m-hVD" secondAttribute="bottom" id="nid-VX-JpJ"/>
                             <constraint firstItem="Gnh-nc-SFS" firstAttribute="height" secondItem="h7s-Qy-LBG" secondAttribute="height" multiplier="0.3" id="oHe-gv-vUB"/>
                             <constraint firstItem="PMc-JD-9EH" firstAttribute="leading" secondItem="sIF-z2-bqY" secondAttribute="leading" constant="32" id="oqM-YC-Vvo"/>
                             <constraint firstItem="sIF-z2-bqY" firstAttribute="trailing" secondItem="Gnh-nc-SFS" secondAttribute="trailing" constant="32" id="sac-wp-yD6"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="animationView" destination="30s-Ee-Uc6" id="GU5-Kn-8X6"/>
                         <outlet property="awardsLabel" destination="T4y-o2-Ivr" id="ynY-gw-oDt"/>
                         <outlet property="collectionView" destination="PMc-JD-9EH" id="XDF-6n-AeG"/>
                         <outlet property="directorLabel" destination="5Hl-U7-Uqg" id="h9P-4E-60R"/>
@@ -319,12 +342,13 @@
                         <outlet property="genreLabel" destination="NbE-om-4Qb" id="mXQ-Fa-D00"/>
                         <outlet property="nameLabel" destination="6Fz-Z9-dQA" id="YY3-3S-cKu"/>
                         <outlet property="plotLabel" destination="3Nf-iU-JxK" id="urf-Jz-cdy"/>
+                        <outlet property="waitingView" destination="37W-2m-hVD" id="Fd1-9X-46e"/>
                         <outlet property="yearLabel" destination="uAL-c4-jsY" id="Yyz-Rh-JgH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aEf-EF-V9n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2934" y="-31"/>
+            <point key="canvasLocation" x="2933.3333333333335" y="-31.473214285714285"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dvS-mL-daq">

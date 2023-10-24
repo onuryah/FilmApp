@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import FirebaseAnalytics
+import Lottie
 
 final class DetailsVC: BaseVC {
     @IBOutlet weak private var filmImage: UIImageView!
@@ -18,6 +18,8 @@ final class DetailsVC: BaseVC {
     @IBOutlet weak private var awardsLabel: UILabel!
     @IBOutlet weak private var collectionView: UICollectionView!
     @IBOutlet weak private var nameLabel: UILabel!
+    @IBOutlet weak private var waitingView: UIView!
+    @IBOutlet weak private var animationView: LottieAnimationView!
     var viewModel: DetailsBusinessLayer?
     
     override func viewDidLoad() {
@@ -32,13 +34,21 @@ final class DetailsVC: BaseVC {
         viewModel?.delegate = self
         
         collectionView.register(DetailsCollectionViewCell.nib, forCellWithReuseIdentifier: DetailsCollectionViewCell.identifier)
+        setLottie()
         navigationController?.navigationBar.tintColor = .lightGray
         navigationController?.navigationBar.topItem?.title = ""
+    }
+    
+    private func setLottie() {
+        animationView.animation = LottieAnimation.named("lottie")
+        animationView.play()
+        animationView.loopMode = .loop
     }
 }
 
 extension DetailsVC: ViewSetterDelegate {
     func setViews() {
+        waitingView.isHidden = true
         SDWebImageHelper.shared.setImage(view: filmImage, urlString: viewModel?.details?.poster ?? "")
         let details = viewModel?.details
         nameLabel.text = details?.title
